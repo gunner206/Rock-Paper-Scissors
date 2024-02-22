@@ -12,9 +12,81 @@
             //randomly return either ‘Rock’, ‘Paper’ or ‘Scissor’
             let choices = ['rock', 'paper', 'scissor'];
             let randomNumber = Math.floor(Math.random() * choices.length);
-            console.log(randomNumber);
-            console.log(choices[randomNumber]);
+            return (choices[randomNumber]);
         }
+        function playRound(playerSelection, computerSelection)
+        {
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerSelection.toLowerCase();
+            if (playerSelection === "rock")
+            {
+                switch(computerSelection) {
+                    case "rock": 
+                        return ("tie");
+                        break;
+                    case "paper": 
+                        return ("lose");
+                        break;
+                    case "scissor": 
+                        return ("win");
+                        break;
+                }
+            }
+            else if (playerSelection === "paper")
+            {
+                switch(computerSelection) {
+                    case "paper": 
+                        return ("tie");
+                        break;
+                    case "scissor": 
+                        return ("lose");
+                        break;
+                    case "rock": 
+                        return ("win");
+                        break;
+                } 
+            }
+            else {
+                switch(computerSelection) {
+                    case "scissor": 
+                        return ("tie");
+                        break;
+                    case "rock": 
+                        return ("lose");
+                        break;
+                    case "paper": 
+                        return ("win");
+                        break;
+                }
+            }
+
+        }
+        function playGame() {
+            let i = 0;
+            let score = 0;
+            while (i < 5)
+            {
+                const playerSelection = prompt("you're choice is: ");
+                const computerSelection = getComputerChoice();
+                let winner = playRound(playerSelection, computerSelection);
+                switch (winner) {
+                    case "win" : 
+                        score++;
+                        console.log("you win");
+                        break;
+                    case "lose" : 
+                        console.log("you lose");
+                        break;
+                    case "tie": 
+                        console.log("tie");
+                        break;
+                }
+                i++;
+            }
+            console.log(`you scored ${score} points`)
+        }
+
+        playGame();
     </script>
 </body>
 </html>
